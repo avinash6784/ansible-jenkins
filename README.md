@@ -9,14 +9,25 @@ None.
 ## Role Variables
 ```yml
 
-
+# Jenkins vars
+jenkins_dest: /opt/jenkins
+jenkins_lib: /var/lib/jenkins
+port: 8081
+prefix: '"--prefix=/jenkins/"'
+jenkins:
+  cli_dest: '{{ jenkins_dest }}/jenkins-cli.jar' # Jenkins CLI destination
+  updates_dest: '{{ jenkins_dest }}/updates_jenkins.json' # Jenkins updates file
+jenkins_api_url: "http://localhost:{{ port }}{{ prefix }}"
+jenkins_cli_cmd: "java -jar {{ jenkins.cli_dest }} -s {{ jenkins_api_url }}"
+java_home: /opt/jdk1.8.0_111
 
 ```
 
 ## Dependencies
 
 This role depends on avinash6784.oracle-java role. This is configured for ansible-galaxy install in requirements.yml.
-### NOTE:### Requirements are installed as virtual user avinash6784 (avinash6784.oracle-java).
+
+**NOTE**: Requirements are installed as virtual user avinash6784 (avinash6784.oracle-java).
 
 Be sure to install required roles with
 ```
