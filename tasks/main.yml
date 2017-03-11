@@ -1,0 +1,14 @@
+---
+
+# Ansible role to install jenkins
+
+  # Include repo file
+  - include: repo.redhat.yml
+
+  - name: Install Jenkins
+    yum: name=jenkins state=latest
+    register: jenkins_install
+
+  # Configure jenkins
+  - include: config.yml
+ 
