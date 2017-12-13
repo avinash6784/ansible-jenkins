@@ -61,4 +61,4 @@ $ ansible-playbook -i hosts jenkins.yml
 
 ## Author Informations
 
-This role was created by [Avinash Pawar](https://github.com/avinash6784/ansible-jenkins).
+This role was created by [Avinash Pawar](http://devopstechie.com).
