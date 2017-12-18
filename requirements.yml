@@ -1,6 +1,6 @@
 ---
  - src: https://github.com/avinash6784/ansible-git.git
-   name: avinash6784.git
+   name: ansible-git
 
  - src: https://github.com/avinash6784/ansible-oracle-java.git
-   name: avinash6784.oracle-java
+   name: ansible-oracle-java
