@@ -1,7 +1,7 @@
 ---
 dependencies:
-  - { role: avinash6784.git }
-  - { role: avinash6784.oracle-java }
+  - { role: ansible-git }
+  - { role: ansible-oracle-java }
 
 galaxy_info:
   author: avinash6784 (Avinash Pawar)
