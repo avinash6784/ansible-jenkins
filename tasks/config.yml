@@ -7,29 +7,16 @@
       path: /etc/sysconfig/jenkins
       state: touch
 
-  - name: Configure Jenkins Port
+  - name: Configure Jenkins
     lineinfile:
       dest: /etc/sysconfig/jenkins
-      regexp: ^JENKINS_PORT=
-      line: JENKINS_PORT={{port}}
+      regexp: "^{{ item.key }}="
+      line: "{{ item.key }}={{ item.value }}"
+    with_dict: "{{ jenkins_configs }}"
+    when: item.value
     register: config_changed
 
-  - name: Configure Jenkins for $JAVA_HOME
-    lineinfile:
-      dest: /etc/sysconfig/jenkins
-      regexp: ^JENKINS_JAVA_CMD=
-      line: JENKINS_JAVA_CMD="{{ java_home }}/bin/java"
-    register: config_changed
-
-  - name: Configure Jenkins Prefix
-    when: prefix is defined
-    lineinfile:
-      dest: /etc/sysconfig/jenkins
-      regexp: ^JENKINS_ARGS=
-      line: JENKINS_ARGS={{prefix}}
-    register: config_changed
-
-  - name: Add jenkins user into sudoers for sudo access
+  - name: Add Jenkins user into sudoers for sudo access
     lineinfile:
       dest: /etc/sudoers
       line: "{{ item.line }}"

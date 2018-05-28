@@ -12,12 +12,12 @@ None.
 # Jenkins vars
 jenkins_dest: /opt/jenkins
 jenkins_lib: /var/lib/jenkins
-port: 8081
+jenkins_http_port: 8081
 prefix: '"--prefix=/jenkins/"'
 jenkins:
   cli_dest: '{{ jenkins_dest }}/jenkins-cli.jar' # Jenkins CLI destination
   updates_dest: '{{ jenkins_dest }}/updates_jenkins.json' # Jenkins updates file
-jenkins_api_url: "http://localhost:{{ port }}{{ prefix }}"
+jenkins_api_url: "http://localhost:{{ jenkins_http_port }}{{ prefix }}"
 jenkins_cli_cmd: "java -jar {{ jenkins.cli_dest }} -s {{ jenkins_api_url }}"
 java_home: /opt/jdk1.8.0_111
 
